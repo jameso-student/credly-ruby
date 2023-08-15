@@ -23,5 +23,5 @@ jobs:
 
       - name: Run tests
         env:
-          AUTH_KEY: ${{ secrets.AUTH_KEY_CREDLY }}
+          AUTH_TOKEN: ${{ secrets.AUTH_KEY_CREDLY }}
         run: bundle exec rspec
