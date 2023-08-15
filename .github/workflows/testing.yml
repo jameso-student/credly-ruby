@@ -2,9 +2,16 @@ name: Test Package
 
 on:
   push:
+    branches:
+      - feature/**
+  pull_request:
+    branches:
+      - main
+      - development
 
 jobs:
   test:
+    name: Credly Client Testing
     runs-on: ubuntu-latest
 
     steps:
