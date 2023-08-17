@@ -1,19 +1,19 @@
 module Credly
   class Client
-    require 'json'
-    include Credly::Connection
-    include Credly::API
-    attr_accessor :options
-    attr_reader :badges
+    include Credly::Actions::Badges
+    attr_reader :organization_id
+    def initialize(base_url:, version: 'v1', organization_id:, access_token:)
+      @url = [base_url, version].join('/')
+      @version = version
+      @organization_id = organization_id
+      @access_token = access_token
+    end
 
-    def initialize(args = {})
-      @options = Credly.options.merge args
-      full_url = [options[:base_endpoint], options[:version], 'organizations', options[:organization_id]].join('/')
-      unless args[:access_token]
-        raise ArgumentError.new "Need an 'access_token' parameter"
+    def connection
+      unless defined? @connection
+        @connection = Connection.new(@url, @access_token)
       end
-      @connection = new_connection full_url, options[:access_token]
-      @badges = Badges.new @connection
+      @connection
     end
   end
 end
