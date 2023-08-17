@@ -1,8 +1,8 @@
 module Credly
   module Actions
     module Badges
-      def badges_get
-        connection.get("organizations/#{organization_id}/badges")
+      def badges_get(params = {})
+        connection.get("organizations/#{organization_id}/badges", params)
       end
     end
   end
