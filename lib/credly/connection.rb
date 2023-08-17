@@ -5,6 +5,7 @@ module Credly
     def initialize(url, access_token)
       @connection = Faraday.new(url: url) do |builder|
         builder.request :json
+        builder.headers['Accept'] = 'application/json'
         builder.response :json
         builder.request :authorization, 'Basic', -> { Base64.strict_encode64(access_token) }
       end
@@ -27,6 +28,7 @@ module Credly
     end
 
     def request(method, path, params)
+      puts @connection.url_prefix
       @connection.public_send(method, path, params)
     end
   end
