@@ -1,7 +1,7 @@
 module Credly
   class Client
     include Credly::Actions::Badges
-    attr_reader :organization_id
+    attr_reader :organization_id, :access_token
     def initialize(base_url:, version: 'v1', organization_id:, access_token:)
       @url = [base_url, version].join('/')
       @version = version

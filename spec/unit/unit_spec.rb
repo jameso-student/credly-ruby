@@ -14,10 +14,9 @@ describe "Authorization" do
     client = Credly::Client.new(
       base_url: "https://sandbox-api.credly.com",
       organization_id: "4ceb7c6c-71c1-4836-aaba-0c15323f7e1d",
-      access_token: "HI"
+      access_token: ENV["AUTH_TOKEN"].to_s
     )
     res = client.badges_get
-    puts res.status
     expect(res.status).to equal(200)
   end
 end
