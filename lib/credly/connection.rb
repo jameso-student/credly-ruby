@@ -28,7 +28,6 @@ module Credly
     end
 
     def request(method, path, params)
-      puts @connection.url_prefix
       @connection.send(method, path, params)
     end
   end
