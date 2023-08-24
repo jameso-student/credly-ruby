@@ -28,7 +28,13 @@ module Credly
     end
 
     def request(method, path, params)
-      @connection.send(method, path, params)
+      response = @connection.send(method, path, params)
+
+      error = Error.from_response(response)
+
+      raise error if error
+
+      response.body
     end
   end
 end
