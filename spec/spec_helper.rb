@@ -1,5 +1,6 @@
 require 'rspec'
-require 'credly'
+require 'credly-ruby'
+require "webmock/rspec"
 
 RSpec.configure do |config|
 
