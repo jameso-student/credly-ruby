@@ -29,6 +29,4 @@ jobs:
           bundle install
 
       - name: Run tests
-        env:
-          AUTH_TOKEN: ${{ secrets.AUTH_KEY_CREDLY }}
         run: bundle exec rspec
