@@ -12,7 +12,7 @@ RSpec.describe Credly::Actions::BadgeDelete do
       stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/badges_delete")
                 .with(query: {filter: "query::FakePerson"})
 
-      @client.badges_get({filter: 'query::FakePerson'})
+      @client.badges_delete({filter: 'query::FakePerson'})
 
       expect(stub).to have_been_requested
     end
