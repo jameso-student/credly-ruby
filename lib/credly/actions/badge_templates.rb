@@ -5,8 +5,8 @@ module Credly
         connection.get("organizations/#{organization_id}/badge_templates", params)
       end
 
-      def badge_templates_get_single(id)
-        connection.get("organizations/#{organization_id}/badge_templates/#{id}")
+      def badge_templates_get_single(badge_template_id)
+        connection.get("organizations/#{organization_id}/badge_templates/#{badge_template_id}")
       end
     end
   end

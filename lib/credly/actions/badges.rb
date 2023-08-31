@@ -5,8 +5,8 @@ module Credly
         connection.get("organizations/#{organization_id}/badges", params)
       end
 
-      def badges_delete(id)
-        connection.delete("organizations/#{organization_id}/badges/#{id}")
+      def badges_delete(badge_id)
+        connection.delete("organizations/#{organization_id}/badges/#{badge_id}")
       end
     end
   end
