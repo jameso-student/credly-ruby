@@ -60,3 +60,6 @@ Gemfile.lock
 
 # RSpec related files
 .rspec_status
+
+# .DS_STORE files
+.DS_STORE
