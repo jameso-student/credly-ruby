@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Credly
   class Error < StandardError
     attr_reader :response
@@ -15,8 +17,6 @@ module Credly
         when 500 then InternalServerError
         when 503 then ServiceUnavailable
         when 500..599 then ServerError
-        else
-          nil
         end
 
       klass&.new(response)
@@ -31,6 +31,7 @@ module Credly
 
     def build_error_message
       return nil if @response.nil?
+
       @response.body
     end
   end
