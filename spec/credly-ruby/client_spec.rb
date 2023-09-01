@@ -6,7 +6,7 @@ RSpec.describe Credly::Client do
   subject { @client }
 
   before do
-    @client = described_class.new(organization_id: 'id', access_token: 'token')
+    @client = described_class.new(organization_id: 'id', auth_token: 'token')
   end
 
   describe '.initialize' do
