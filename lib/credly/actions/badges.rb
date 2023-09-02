@@ -11,8 +11,8 @@ module Credly
         connection.delete("organizations/#{organization_id}/badges/#{badge_id}")
       end
 
-      def badges_revoke(badge_id)
-        connection.put("organizations/#{organization_id}/badges/#{badge_id}/revoke")
+      def badges_revoke(badge_id, params)
+        connection.put("organizations/#{organization_id}/badges/#{badge_id}/revoke", params)
       end
     end
   end
