@@ -30,4 +30,17 @@ RSpec.describe Credly::Actions::Badges do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#badges_revoke' do
+    it 'issues the correct PUT request to revoke a badge' do
+      id = 0 
+
+      stub = stub_request(:put, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}/revoke")
+
+      @client.badges_revoke(id)
+
+      expect(stub).to have_been_requested
+    end
+  end
+  
 end
