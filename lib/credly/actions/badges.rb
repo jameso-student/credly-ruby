@@ -15,8 +15,8 @@ module Credly
         connection.put("organizations/#{organization_id}/badges/#{badge_id}/revoke", revoke_params)
       end
 
-      def badges_replace(badge_id, params)
-        connection.post("organizations/#{organization_id}/badges/#{badge_id}/replace", params)
+      def badges_replace(badge_id, replace_params)
+        connection.post("organizations/#{organization_id}/badges/#{badge_id}/replace", replace_params)
       end
   
     end

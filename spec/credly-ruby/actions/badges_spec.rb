@@ -55,7 +55,7 @@ RSpec.describe Credly::Actions::Badges do
     it 'issues the correct POST request to replace a badge' do
       id = 0 
 
-      params = {
+      replace_params = {
         "badge_template_id": "4008b9b1-1251-40a3-ba90-1bbc9720fc37",
         "issued_at": "2014-04-01 09:41:00 -0500",
         "issued_to": "Firstname Lastname",
@@ -79,7 +79,7 @@ RSpec.describe Credly::Actions::Badges do
       stub = stub_request(:post, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}/replace")
              .with(body: params.to_json)
 
-      @client.badges_replace(id, params)
+      @client.badges_replace(id, replace_params)
 
       expect(stub).to have_been_requested
     end
