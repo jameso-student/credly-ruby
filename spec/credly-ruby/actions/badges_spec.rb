@@ -77,7 +77,7 @@ RSpec.describe Credly::Actions::Badges do
       }
 
       stub = stub_request(:post, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}/replace")
-             .with(body: params.to_json)
+             .with(body: replace_params.to_json)
 
       @client.badges_replace(id, replace_params)
 
