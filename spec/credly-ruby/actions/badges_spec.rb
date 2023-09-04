@@ -37,15 +37,15 @@ RSpec.describe Credly::Actions::Badges do
       reason = 'Check bounced'
       suppress_notification = false
 
-      params = {
+      revoke_params = {
         reason: reason,
         suppress_revoke_notification_email: suppress_notification
       }
 
       stub = stub_request(:put, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}/revoke")
-             .with(body: params.to_json)
+             .with(body: revoke_params.to_json)
 
-      @client.badges_revoke(id, params)
+      @client.badges_revoke(id, revoke_params)
 
       expect(stub).to have_been_requested
     end
