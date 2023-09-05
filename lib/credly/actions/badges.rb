@@ -18,7 +18,6 @@ module Credly
       def badges_replace(badge_id, replace_params)
         connection.post("organizations/#{organization_id}/badges/#{badge_id}/replace", replace_params)
       end
-  
     end
   end
 end
