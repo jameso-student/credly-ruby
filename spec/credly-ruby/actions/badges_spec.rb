@@ -9,29 +9,29 @@ RSpec.describe Credly::Actions::Badges do
     @client = Credly::Client.new(organization_id: 'id', auth_token: 'token')
   end
 
-  describe '#badges_get' do
+  describe '#badge_list' do
     it 'issues the correct GET request with query params' do
       stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/badges")
-             .with(query: { filter: 'query::FakePerson' })
+             .with(query: { filter: 'query::FakePerson|state::pending', sort: '-issued_at', page: 2 })
 
-      @client.badges_get({ filter: 'query::FakePerson' })
+      @client.badge_list({ filter: 'query::FakePerson|state::pending', sort: '-issued_at', page: 2 })
 
       expect(stub).to have_been_requested
     end
   end
 
-  describe '#badges_delete' do
+  describe '#badge_delete' do
     it 'issues the correct DELETE request with query params' do
       id = 0
       stub = stub_request(:delete, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}")
 
-      @client.badges_delete(id)
+      @client.badge_delete(id)
 
       expect(stub).to have_been_requested
     end
   end
 
-  describe '#badges_revoke' do
+  describe '#badge_revoke' do
     it 'issues the correct PUT request to revoke a badge' do
       id = 0
       reason = 'Check bounced'
@@ -45,13 +45,13 @@ RSpec.describe Credly::Actions::Badges do
       stub = stub_request(:put, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}/revoke")
              .with(body: revoke_params)
 
-      @client.badges_revoke(id, revoke_params)
+      @client.badge_revoke(id, revoke_params)
 
       expect(stub).to have_been_requested
     end
   end
 
-  describe '#badges_replace' do
+  describe '#badge_replace' do
     it 'issues the correct POST request to replace a badge' do
       id = 0
 
@@ -79,7 +79,7 @@ RSpec.describe Credly::Actions::Badges do
       stub = stub_request(:post, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}/replace")
              .with(body: replace_params)
 
-      @client.badges_replace(id, replace_params)
+      @client.badge_replace(id, replace_params)
 
       expect(stub).to have_been_requested
     end
