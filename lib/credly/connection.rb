@@ -5,6 +5,7 @@ require 'faraday'
 module Credly
   class Connection
     def initialize(url, auth_token)
+    def initialize(url, access_token)
       @connection = Faraday.new(url: url) do |builder|
         builder.request :json
         builder.headers[:accept] = 'application/json'
