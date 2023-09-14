@@ -30,4 +30,23 @@ RSpec.describe Credly::Actions::Badges do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#badges_get_bulk' do
+    it 'issues the correct GET request without query params' do
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
+
+      @client.badges_get_bulk
+
+      expect(stub).to have_been_requested
+    end
+
+    it 'issues the correct GET request with query params' do
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
+               .with(query: { filter: 'query::FakePerson' })
+
+      @client.badges_get_bulk({ filter: 'query::FakePerson' })
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
