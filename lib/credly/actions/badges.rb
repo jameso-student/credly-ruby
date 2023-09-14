@@ -10,6 +10,10 @@ module Credly
       def badges_delete(badge_id)
         connection.delete("organizations/#{organization_id}/badges/#{badge_id}")
       end
+
+      def badges_get_bulk(params = {})
+        connection.get("organizations/#{organization_id}/high_volume_issued_badge_search", params)
+      end
     end
   end
 end
