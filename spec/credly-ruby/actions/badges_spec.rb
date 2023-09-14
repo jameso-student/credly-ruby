@@ -21,7 +21,7 @@ RSpec.describe Credly::Actions::Badges do
   end
 
   describe '#badge_delete' do
-    it 'issues the correct DELETE request with query params' do
+    it 'issues the correct DELETE request' do
       id = 0
       stub = stub_request(:delete, "#{@client.url}/organizations/#{@client.organization_id}/badges/#{id}")
 
@@ -32,7 +32,7 @@ RSpec.describe Credly::Actions::Badges do
   end
 
   describe '#badge_revoke' do
-    it 'issues the correct PUT request to revoke a badge' do
+    it 'issues the correct PUT request to revoke a badge with query params' do
       id = 0
       reason = 'Check bounced'
       suppress_notification = false
@@ -80,6 +80,27 @@ RSpec.describe Credly::Actions::Badges do
              .with(body: replace_params)
 
       @client.badge_replace(id, replace_params)
+
+      expect(stub).to have_been_requested
+    end
+  end
+
+  describe '#badges_get_bulk' do
+    it 'issues the correct GET request without query params' do
+      stub = stub_request(:get,
+                          "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
+
+      @client.badge_list_bulk
+
+      expect(stub).to have_been_requested
+    end
+
+    it 'issues the correct GET request with query params' do
+      stub = stub_request(:get,
+                          "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
+             .with(query: { filter: 'query::FakePerson' })
+
+      @client.badge_list_bulk({ filter: 'query::FakePerson' })
 
       expect(stub).to have_been_requested
     end

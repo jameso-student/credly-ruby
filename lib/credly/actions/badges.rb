@@ -11,6 +11,10 @@ module Credly
         connection.delete("organizations/#{organization_id}/badges/#{badge_id}")
       end
 
+      def badge_list_bulk(params = {})
+        connection.get("organizations/#{organization_id}/high_volume_issued_badge_search", params)
+      end
+
       def badge_revoke(badge_id, revoke_params)
         connection.put("organizations/#{organization_id}/badges/#{badge_id}/revoke", revoke_params)
       end
