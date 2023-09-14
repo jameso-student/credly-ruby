@@ -87,7 +87,8 @@ RSpec.describe Credly::Actions::Badges do
 
   describe '#badges_get_bulk' do
     it 'issues the correct GET request without query params' do
-      stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
+      stub = stub_request(:get,
+                          "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
 
       @client.badge_list_bulk
 
@@ -95,8 +96,9 @@ RSpec.describe Credly::Actions::Badges do
     end
 
     it 'issues the correct GET request with query params' do
-      stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
-               .with(query: { filter: 'query::FakePerson' })
+      stub = stub_request(:get,
+                          "#{@client.url}/organizations/#{@client.organization_id}/high_volume_issued_badge_search")
+             .with(query: { filter: 'query::FakePerson' })
 
       @client.badge_list_bulk({ filter: 'query::FakePerson' })
 

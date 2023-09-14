@@ -30,7 +30,7 @@ RSpec.describe Credly::Actions::BadgeTemplates do
     describe '#badge_templates_list' do
       it 'issues the correct request with query params' do
         stub = stub_request(:get, "#{@client.url}/organizations/#{@client.organization_id}/badge_templates")
-                 .with(query: { filter: 'query::FakeParam' })
+               .with(query: { filter: 'query::FakeParam' })
 
         @client.badge_templates_list({ filter: 'query::FakeParam' })
 
