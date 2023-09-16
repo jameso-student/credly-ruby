@@ -10,25 +10,25 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  test:
+  lint:
     docker:
       - image: cimg/ruby:3.1.2
 
     steps:
       - checkout
       - ruby/install-deps
-      - ruby/rspec-test
+      - ruby/rubocop-check
 
-#  test:
-#    docker:
-#      - image: cimg/ruby:3.1.2
-#
-#    parallelism: 1
-#
-#    steps:
-#      - checkout
-#      - ruby/install-deps
-#      - ruby/rspec-test
+  test:
+    docker:
+      - image: cimg/ruby:3.1.2
+
+    parallelism: 1
+
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rspec-test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -37,5 +37,5 @@ workflows:
 
   ci:
     jobs:
-      #      - lint
+      - lint
       - test

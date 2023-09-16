@@ -29,34 +29,34 @@ RSpec.describe Credly::Actions::Badges do
       expect(stub).to have_been_requested
     end
   end
-  
+
   describe '#organization_update' do
     it 'issues the correct PUT request' do
       id = 1
 
       update_params = {
-        "name": "Example Organization",
-        "website_url": "https://www.example.com",
-        "webhook_url": "https://example.com/webhook_endpoint",
-        "location": "East Junius, Ohio",
-        "zip_or_postal_code": "55437",
-        "contact_email": "info@example.com",
-        "legal_contact_email": "legal@example.com",
-        "organization_type": "Auto Parts Reseller",
-        "bio": "Since 1994",
-        "twitter_url": "https://twitter.com/example",
-        "facebook_url": "https://www.facebook.com/example",
-        "photo": "https://cdn.example.com/path/to/image.png",
-        "city": "Bloomington",
-        "state_or_province": "Minnesota",
-        "country": "United States",
-        "address": "1313 Mockingbird Lane",
+        "name": 'Example Organization',
+        "website_url": 'https://www.example.com',
+        "webhook_url": 'https://example.com/webhook_endpoint',
+        "location": 'East Junius, Ohio',
+        "zip_or_postal_code": '55437',
+        "contact_email": 'info@example.com',
+        "legal_contact_email": 'legal@example.com',
+        "organization_type": 'Auto Parts Reseller',
+        "bio": 'Since 1994',
+        "twitter_url": 'https://twitter.com/example',
+        "facebook_url": 'https://www.facebook.com/example',
+        "photo": 'https://cdn.example.com/path/to/image.png',
+        "city": 'Bloomington',
+        "state_or_province": 'Minnesota',
+        "country": 'United States',
+        "address": '1313 Mockingbird Lane',
         "hide_subscription": false
       }
 
       stub = stub_request(:put, "#{@client.url}/organizations/#{id}").with(body: update_params)
 
-      @client.organization_update(id,update_params)
+      @client.organization_update(id, update_params)
 
       expect(stub).to have_been_requested
     end
