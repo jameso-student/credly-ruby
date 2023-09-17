@@ -61,4 +61,16 @@ RSpec.describe Credly::Actions::Badges do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#organization_event_get' do
+    it 'issues the correct GET request' do
+      id = 1
+      event_id = 2
+      stub = stub_request(:get, "#{@client.url}/organizations/#{id}/events/#{event_id}")
+
+      @client.organization_event_get(id, event_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
