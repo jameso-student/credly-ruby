@@ -20,6 +20,29 @@ RSpec.describe Credly::Actions::Badges do
     end
   end
 
+  describe '#badge_issue' do
+    it 'issues the correct POST request with body params' do
+      issue_params = {
+        "recipient_email": 'user1@example.com',
+        "badge_template_id": 'cfaf2910-ea5f-46f1-89a5-db525dad6e58',
+        "issued_at": '2014-04-01 09:41:00 -0500',
+        "issued_to_first_name": 'Earner First Name',
+        "issued_to_last_name": 'Earner Last Name',
+        "expires_at": nil,
+        "issuer_earner_id": 'abc123',
+        "locale": 'en',
+        "suppress_badge_notification_email": false
+      }
+
+      stub = stub_request(:post, "#{@client.url}/organizations/#{@client.organization_id}/badges")
+             .with(body: issue_params)
+
+      @client.badge_issue(issue_params)
+
+      expect(stub).to have_been_requested
+    end
+  end
+
   describe '#badge_delete' do
     it 'issues the correct DELETE request' do
       id = 0
