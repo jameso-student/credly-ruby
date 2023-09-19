@@ -7,6 +7,10 @@ module Credly
         connection.get("organizations/#{organization_id}/badges", params)
       end
 
+      def badge_issue(params)
+        connection.post("organizations/#{organization_id}/badges", params)
+      end
+
       def badge_delete(badge_id)
         connection.delete("organizations/#{organization_id}/badges/#{badge_id}")
       end
