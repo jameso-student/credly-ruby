@@ -32,11 +32,11 @@ RSpec.describe Credly::Actions::BadgeTemplates do
 
     describe '#badge_template_get' do
       it 'issues the correct request with ID' do
-        badge_template_id = 1
+        template_id = 1
 
-        stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/badge_templates/1")
+        stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/badge_templates/#{template_id}")
 
-        @client.badge_template_get(@organization_id, badge_template_id)
+        @client.badge_template_get(@organization_id, template_id)
 
         expect(stub).to have_been_requested
       end
