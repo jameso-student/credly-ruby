@@ -17,6 +17,7 @@ module Credly
       @version = version
       @auth_token = auth_token
       @sandbox = sandbox
+      @connection = Connection.new(@url, @auth_token)
     end
 
     def connection
@@ -25,7 +26,7 @@ module Credly
 
     def auth_token=(auth_token)
       @auth_token = auth_token
-      @connection = Connection.new(@url, @auth_token)
+      @connection.auth_token = auth_token
     end
 
     def base_url
