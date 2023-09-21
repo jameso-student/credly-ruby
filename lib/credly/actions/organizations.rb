@@ -11,8 +11,8 @@ module Credly
         connection.get("organizations/#{organization_id}")
       end
 
-      def organization_update(organization_id, update_params)
-        connection.put("organizations/#{organization_id}", update_params)
+      def organization_update(organization_id, body_params)
+        connection.put("organizations/#{organization_id}", body_params)
       end
 
       def organization_event_get(organization_id, event_id)
