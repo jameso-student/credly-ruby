@@ -24,15 +24,15 @@ RSpec.describe Credly::Actions::Badges do
   describe '#badge_issue' do
     it 'issues the correct POST request with body params' do
       issue_params = {
-        "recipient_email": 'user1@example.com',
-        "badge_template_id": 'cfaf2910-ea5f-46f1-89a5-db525dad6e58',
-        "issued_at": '2014-04-01 09:41:00 -0500',
-        "issued_to_first_name": 'Earner First Name',
-        "issued_to_last_name": 'Earner Last Name',
-        "expires_at": nil,
-        "issuer_earner_id": 'abc123',
-        "locale": 'en',
-        "suppress_badge_notification_email": false
+        recipient_email: 'user1@example.com',
+        badge_template_id: 'cfaf2910-ea5f-46f1-89a5-db525dad6e58',
+        issued_at: '2014-04-01 09:41:00 -0500',
+        issued_to_first_name: 'Earner First Name',
+        issued_to_last_name: 'Earner Last Name',
+        expires_at: nil,
+        issuer_earner_id: 'abc123',
+        locale: 'en',
+        suppress_badge_notification_email: false
       }
 
       stub = stub_request(:post, "#{@client.url}/organizations/#{@organization_id}/badges")
@@ -80,24 +80,24 @@ RSpec.describe Credly::Actions::Badges do
       badge_id = 0
 
       replace_params = {
-        "badge_template_id": '4008b9b1-1251-40a3-ba90-1bbc9720fc37',
-        "issued_at": '2014-04-01 09:41:00 -0500',
-        "issued_to": 'Firstname Lastname',
-        "issued_to_first_name": 'Firstname',
-        "issued_to_last_name": 'Lastname',
-        "issuer_earner_id": 'earner-1',
-        "expires_at": false,
-        "country_name": 'United States of America',
-        "state_or_province": 'Minnesota',
-        "evidence": [
+        badge_template_id: '4008b9b1-1251-40a3-ba90-1bbc9720fc37',
+        issued_at: '2014-04-01 09:41:00 -0500',
+        issued_to: 'Firstname Lastname',
+        issued_to_first_name: 'Firstname',
+        issued_to_last_name: 'Lastname',
+        issuer_earner_id: 'earner-1',
+        expires_at: false,
+        country_name: 'United States of America',
+        state_or_province: 'Minnesota',
+        evidence: [
           {
-            "type": 'UrlEvidence',
-            "value": 'http://www.example.com/evidence',
-            "description": 'Description in URL evidence is optional',
-            "name": 'Evidence'
+            type: 'UrlEvidence',
+            value: 'http://www.example.com/evidence',
+            description: 'Description in URL evidence is optional',
+            name: 'Evidence'
           }
         ],
-        "notification_message": 'Lorem ipsum dolor'
+        notification_message: 'Lorem ipsum dolor'
       }
 
       stub = stub_request(:post, "#{@client.url}/organizations/#{@organization_id}/badges/#{badge_id}/replace")
