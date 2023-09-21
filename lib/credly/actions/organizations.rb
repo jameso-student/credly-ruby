@@ -22,6 +22,10 @@ module Credly
       def organization_tokens_list(organization_id)
         connection.get("organizations/#{organization_id}/authorization_tokens")
       end
+
+      def organization_event_list(organization_id, page = {})
+        connection.get("organizations/#{organization_id}/events", page)
+      end
     end
   end
 end

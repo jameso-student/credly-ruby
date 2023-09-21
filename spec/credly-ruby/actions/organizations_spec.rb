@@ -80,4 +80,25 @@ RSpec.describe Credly::Actions::Badges do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#organization_event_list' do
+    it 'issues the correct GET request without a page number' do
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/events")
+
+      @client.organization_event_list(@organization_id)
+
+      expect(stub).to have_been_requested
+    end
+
+    it 'issues the correct GET request with a page number' do
+      page_number = 2
+
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/events")
+             .with(query: { page: page_number })
+
+      @client.organization_event_list(@organization_id, { page: page_number })
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
