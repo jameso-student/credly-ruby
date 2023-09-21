@@ -5,6 +5,7 @@ module Credly
     include Credly::Actions::Badges
     include Credly::Actions::BadgeTemplates
     include Credly::Actions::Organizations
+    include Credly::Actions::OBI
     attr_reader :url, :auth_token
     attr_accessor :sandbox
 
