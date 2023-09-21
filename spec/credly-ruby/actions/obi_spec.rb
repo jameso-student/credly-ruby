@@ -19,4 +19,15 @@ RSpec.describe Credly::Actions::OBI do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#badge_class_get' do
+    it 'issues the correct GET request' do
+      badge_class_id = 1
+      stub = stub_request(:get, "#{@client.url}/obi/v2/badge_classes/#{badge_class_id}")
+
+      @client.badge_class_get(badge_class_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
