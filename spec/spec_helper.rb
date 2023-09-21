@@ -6,6 +6,3 @@ SimpleCov.start
 require 'rspec'
 require 'credly_ruby'
 require 'webmock/rspec'
-
-RSpec.configure do |config|
-end
