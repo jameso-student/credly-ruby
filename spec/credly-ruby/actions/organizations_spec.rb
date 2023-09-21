@@ -6,7 +6,8 @@ RSpec.describe Credly::Actions::Badges do
   subject { @client }
 
   before do
-    @client = Credly::Client.new(organization_id: 'id', auth_token: 'token')
+    @client = Credly::Client.new(auth_token: 'token')
+    @organization_id = 1
   end
 
   describe '#organization_list' do
@@ -21,10 +22,9 @@ RSpec.describe Credly::Actions::Badges do
 
   describe '#organization_get' do
     it 'issues the correct GET request' do
-      id = 1
-      stub = stub_request(:get, "#{@client.url}/organizations/#{id}")
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}")
 
-      @client.organization_get(id)
+      @client.organization_get(@organization_id)
 
       expect(stub).to have_been_requested
     end
@@ -32,8 +32,6 @@ RSpec.describe Credly::Actions::Badges do
 
   describe '#organization_update' do
     it 'issues the correct PUT request' do
-      id = 1
-
       update_params = {
         "name": 'Example Organization',
         "website_url": 'https://www.example.com',
@@ -54,9 +52,9 @@ RSpec.describe Credly::Actions::Badges do
         "hide_subscription": false
       }
 
-      stub = stub_request(:put, "#{@client.url}/organizations/#{id}").with(body: update_params)
+      stub = stub_request(:put, "#{@client.url}/organizations/#{@organization_id}").with(body: update_params)
 
-      @client.organization_update(id, update_params)
+      @client.organization_update(@organization_id, update_params)
 
       expect(stub).to have_been_requested
     end
@@ -64,11 +62,20 @@ RSpec.describe Credly::Actions::Badges do
 
   describe '#organization_event_get' do
     it 'issues the correct GET request' do
-      id = 1
       event_id = 2
-      stub = stub_request(:get, "#{@client.url}/organizations/#{id}/events/#{event_id}")
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/events/#{event_id}")
 
-      @client.organization_event_get(id, event_id)
+      @client.organization_event_get(@organization_id, event_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
+
+  describe '#organization_tokens_list' do
+    it 'issues the correct GET request' do
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/authorization_tokens")
+
+      @client.organization_tokens_list(@organization_id)
 
       expect(stub).to have_been_requested
     end
