@@ -11,7 +11,6 @@ group :development, :test do
   gem 'rspec_junit_formatter', '~> 0.6.0'
   gem 'rubocop', '~> 1.52.1'
   gem 'rubocop-rspec', '~> 2.22.0'
+  gem 'simplecov'
   gem 'webmock', '~> 3.18.1'
 end
-
-gem 'simplecov', require: false, group: :test
