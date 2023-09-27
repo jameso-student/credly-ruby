@@ -19,5 +19,4 @@ RSpec.describe Credly::Actions::IssuerAuthorizations do
       expect(stub).to have_been_requested
     end
   end
-
 end
