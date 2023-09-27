@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Credly::Actions::Badges do
+RSpec.describe Credly::Actions::Organizations do
   subject { @client }
 
   before do
