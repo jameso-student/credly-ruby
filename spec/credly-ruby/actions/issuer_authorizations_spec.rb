@@ -19,4 +19,15 @@ RSpec.describe Credly::Actions::IssuerAuthorizations do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#issuer_deauthorize' do
+    it 'issues the correct DELETE request' do
+      issuer_id = 1
+      stub = stub_request(:delete, "#{@client.url}/organizations/#{@organization_id}/issuers/#{issuer_id}")
+
+      @client.issuer_deauthorize(@organization_id, issuer_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
