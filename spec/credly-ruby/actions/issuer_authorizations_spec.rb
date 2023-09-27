@@ -10,11 +10,21 @@ RSpec.describe Credly::Actions::IssuerAuthorizations do
     @organization_id = 1
   end
 
-  describe '#issuer_get' do
+  describe '#issuer_list' do
     it 'issues the correct GET request' do
       stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/issuers")
 
       @client.issuer_list(@organization_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
+  
+  describe '#grantor_list' do
+    it 'issues the correct GET request' do
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/grantors")
+
+      @client.grantor_list(@organization_id)
 
       expect(stub).to have_been_requested
     end
