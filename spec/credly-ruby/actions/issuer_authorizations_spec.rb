@@ -14,7 +14,7 @@ RSpec.describe Credly::Actions::IssuerAuthorizations do
     it 'issues the correct GET request' do
       stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/issuers")
 
-      @client.issuer_get(@organization_id)
+      @client.issuer_list(@organization_id)
 
       expect(stub).to have_been_requested
     end
