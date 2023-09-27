@@ -19,7 +19,7 @@ RSpec.describe Credly::Actions::IssuerAuthorizations do
       expect(stub).to have_been_requested
     end
   end
-  
+
   describe '#grantor_list' do
     it 'issues the correct GET request' do
       stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/grantors")
@@ -29,7 +29,7 @@ RSpec.describe Credly::Actions::IssuerAuthorizations do
       expect(stub).to have_been_requested
     end
   end
-  
+
   describe '#issuer_deauthorize' do
     it 'issues the correct DELETE request' do
       issuer_id = 1

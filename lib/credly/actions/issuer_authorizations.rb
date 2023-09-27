@@ -6,7 +6,7 @@ module Credly
       def issuer_list(organization_id)
         connection.get("organizations/#{organization_id}/issuers")
       end
-      
+
       def grantor_list(organization_id)
         connection.get("organizations/#{organization_id}/grantors")
       end
