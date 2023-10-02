@@ -46,7 +46,7 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
-  
+
   describe '#employee_create' do
     it 'issues the correct POST request' do
       body_params = {
@@ -74,7 +74,7 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
-  
+
   describe '#employee_update' do
     it 'issues the correct PUT request' do
       employee_id = 1
