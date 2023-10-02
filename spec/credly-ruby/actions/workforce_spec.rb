@@ -46,4 +46,36 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#employee_update' do
+    it 'issues the correct PUT request' do
+      employee_id = 1
+
+      body_params = {
+        first_name: 'Alfred',
+        last_name: 'Skiles',
+        team: 'Development',
+        position_title: 'Front End',
+        external_id: 'employee-external-id-123',
+        manager_first_name: 'Jane',
+        manager_last_name: 'Doe',
+        manager_external_id: 'manager-external-id-123',
+        country: 'United States of America',
+        zip_code:  '55347',
+        state_or_province: 'Minnesota',
+        department: 'Engineering',
+        organization_level_1: 'Specialist',
+        organization_level_2: 'Director',
+        organization_level_3: 'Vice President',
+        job_family: 'Human Resources'
+      }
+
+      stub = stub_request(:put, "#{@client.url}/organizations/#{@organization_id}/employees/#{employee_id}")
+             .with(body: body_params)
+
+      @client.employee_update(@organization_id, employee_id, body_params)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
