@@ -123,4 +123,16 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#employee_delete' do
+    it 'issues the correct DELETE request' do
+      employee_id = 1
+
+      stub = stub_request(:delete, "#{@client.url}/organizations/#{@organization_id}/employees/#{employee_id}")
+
+      @client.employee_delete(@organization_id, employee_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
