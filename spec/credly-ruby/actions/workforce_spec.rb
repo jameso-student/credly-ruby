@@ -61,12 +61,12 @@ RSpec.describe Credly::Actions::Workforce do
         manager_last_name: 'Doe',
         manager_external_id: 'manager-external-id-123',
         country: 'United States of America',
-        zip_code:  '55347',
+        zip_code: '55347',
         state_or_province: 'Minnesota',
         department: 'Engineering',
-        organization_level_1: 'Specialist',
-        organization_level_2: 'Director',
-        organization_level_3: 'Vice President',
+        organization_level1: 'Specialist',
+        organization_level2: 'Director',
+        organization_level3: 'Vice President',
         job_family: 'Human Resources'
       }
 
