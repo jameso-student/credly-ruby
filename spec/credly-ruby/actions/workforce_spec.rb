@@ -53,7 +53,7 @@ RSpec.describe Credly::Actions::Workforce do
 
       body_params = {
         first_name: 'Alfred',
-        last_name: 'Skiles',
+        last_name: 'Persons',
         team: 'Development',
         position_title: 'Front End',
         external_id: 'employee-external-id-123',
