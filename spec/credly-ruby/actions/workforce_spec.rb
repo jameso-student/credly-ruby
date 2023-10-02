@@ -110,7 +110,7 @@ RSpec.describe Credly::Actions::Workforce do
   describe '#employee_invite' do
     it 'issues the correct POST request' do
       body_params = {
-        employee_list: ['external-id-1', 'external-id-2'],
+        employee_list: %w[external-id-1 external-id-2],
         list_type: 'external_id',
         statuses: ['pending']
       }
