@@ -14,6 +14,10 @@ module Credly
       def employee_update(organization_id, employee_id, body_params)
         connection.put("organizations/#{organization_id}/employees/#{employee_id}", body_params)
       end
+      
+      def employee_create(organization_id, body_params)
+        connection.post("organizations/#{organization_id}/employees", body_params)
+      end
     end
   end
 end
