@@ -135,4 +135,16 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#employee_data_api_get' do
+    it 'issues the correct GET request' do
+      employee_id = 1
+
+      stub = stub_request(:get, "#{@client.url}/organizations/#{@organization_id}/employees/#{employee_id}/data")
+
+      @client.employee_data_api_get(@organization_id, employee_id)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
