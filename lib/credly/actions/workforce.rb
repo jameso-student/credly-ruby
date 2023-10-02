@@ -22,6 +22,10 @@ module Credly
       def employee_invite(organization_id, body_params)
         connection.post("organizations/#{organization_id}/employees/send_invitations", body_params)
       end
+
+      def employee_delete(organization_id, employee_id)
+        connection.delete("organizations/#{organization_id}/employees/#{employee_id}")
+      end
     end
   end
 end
