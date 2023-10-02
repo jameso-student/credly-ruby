@@ -46,7 +46,35 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
+  
+  describe '#employee_create' do
+    it 'issues the correct POST request' do
+      body_params = {
+        email: 'email1@example.com',
+        first_name: 'Alfred',
+        last_name: 'Skiles',
+        team: 'Development',
+        position_title: 'Front End',
+        external_id: 'employee-external-id-123',
+        manager_first_name: 'Jane',
+        manager_last_name: 'Doe',
+        manager_external_id: 'manager-external-id-123',
+        country: 'United States of America',
+        zip_code: '55347',
+        state_or_province: 'Minnesota',
+        department: 'Engineering',
+        job_family: 'Human Resources'
+      }
 
+      stub = stub_request(:post, "#{@client.url}/organizations/#{@organization_id}/employees")
+             .with(body: body_params)
+
+      @client.employee_create(@organization_id, body_params)
+
+      expect(stub).to have_been_requested
+    end
+  end
+  
   describe '#employee_update' do
     it 'issues the correct PUT request' do
       employee_id = 1
