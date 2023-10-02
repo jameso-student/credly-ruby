@@ -26,6 +26,10 @@ module Credly
       def employee_delete(organization_id, employee_id)
         connection.delete("organizations/#{organization_id}/employees/#{employee_id}")
       end
+
+      def employee_data_api_get(organization_id, employee_id)
+        connection.get("organizations/#{organization_id}/employees/#{employee_id}/data")
+      end
     end
   end
 end
