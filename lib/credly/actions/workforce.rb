@@ -10,6 +10,10 @@ module Credly
       def employee_get(organization_id, employee_id)
         connection.get("organizations/#{organization_id}/employees/#{employee_id}")
       end
+
+      def employee_create(organization_id, body_params)
+        connection.post("organizations/#{organization_id}/employees", body_params)
+      end
     end
   end
 end
