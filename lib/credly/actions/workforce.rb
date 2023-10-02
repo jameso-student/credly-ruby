@@ -18,6 +18,10 @@ module Credly
       def employee_create(organization_id, body_params)
         connection.post("organizations/#{organization_id}/employees", body_params)
       end
+
+      def employee_invite(organization_id, body_params)
+        connection.post("organizations/#{organization_id}/employees/send_invitations", body_params)
+      end
     end
   end
 end

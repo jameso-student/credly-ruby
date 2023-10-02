@@ -106,4 +106,21 @@ RSpec.describe Credly::Actions::Workforce do
       expect(stub).to have_been_requested
     end
   end
+
+  describe '#employee_invite' do
+    it 'issues the correct POST request' do
+      body_params = {
+        employee_list: %w[external-id-1 external-id-2],
+        list_type: 'external_id',
+        statuses: ['pending']
+      }
+
+      stub = stub_request(:post, "#{@client.url}/organizations/#{@organization_id}/employees/send_invitations")
+             .with(body: body_params)
+
+      @client.employee_invite(@organization_id, body_params)
+
+      expect(stub).to have_been_requested
+    end
+  end
 end
